@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* --- Routing --- */
 app.use('/api', require('./routes'));
+app.use('/api/radio-javan', require('./routes/radio-javan'));
 
 
 // Handle not-found requests

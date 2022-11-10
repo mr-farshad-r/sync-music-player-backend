@@ -1,12 +1,15 @@
 const router = require('express').Router();
 
 router.get('/', function(req, res, next) {
-    res.status(200).json({
-        success: true,
-        data: {
-            message: 'Sync Music Player API'
+    const RESPONSE = {
+        status: 200,
+        result: {
+            success: true,
+            data: {},
+            message: 'Music Player Sync'
         }
-    });
+    };
+    res.status(RESPONSE.status).json(RESPONSE.result);
 });
 
 module.exports = router;
