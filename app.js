@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 /* --- Routing --- */
+app.use('/api', require('./routes'));
 
 
 // Handle not-found requests
