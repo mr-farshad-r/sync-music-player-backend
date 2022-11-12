@@ -1,13 +1,17 @@
 const router = require('express').Router();
-const {getRadioJavanUrl} = require("../helpers/radio-javan");
+const {getRadioJavanDetails} = require("../helpers/radio-javan");
+const {download} = require("../helpers/downloader");
 
 router.post('/', async (req, res, next) => {
     const {url} = req.body;
-    const music = await getRadioJavanUrl(url);
+    const {url: music, details: {permlink}} = await getRadioJavanDetails(url);
+
+    await download(music, './public/dl/', permlink, 'mp3');
 
     res.status(200).json({
         success: true,
         data: {
+            test: `/dl/${permlink}.mp3`,
             url: music
         }
     });

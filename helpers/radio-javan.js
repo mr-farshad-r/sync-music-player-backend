@@ -37,12 +37,15 @@ const getHost = async (url) => {
     return data
 }
 
-const getRadioJavanUrl = async (url) => {
+const getRadioJavanDetails = async (url) => {
     //TODO: validate url
     //TODO: redirect 302 -> https://rj.app/m/bE35ZJDl
     const details = await getMusicDetail(url);
     const host = await getHost(url);
-    return host.host + '/media/' + details['currentMP3Url'] + '.mp3';
+    return {
+        url: host.host + '/media/' + details['currentMP3Url'] + '.mp3',
+        details
+    };
 }
 
-module.exports = {getRadioJavanUrl}
+module.exports = {getRadioJavanDetails}
